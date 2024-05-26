@@ -49,19 +49,21 @@ public class RegisterTest extends BaseTest {
 
     @Test
     public void userSholdRegisterAccountSuccessfully() {                    //Register successfully test
+        String userName = "" + (int) (Math.random() * Integer.MAX_VALUE);            //Create random username
+        String emailID = "User" + userName + "@example.com";                        //Create random email Id
         //Find register element and click on that
         WebElement registerElement = driver.findElement(By.linkText("Register"));
         registerElement.click();
-        driver.findElement(By.id("gender-male")).click();                                                                           //Click on gender
+        driver.findElement(By.id("gender-male")).click();                                                                //Click on gender
         driver.findElement(By.id("FirstName")).sendKeys("Nishit");                                                       //Enter first name
         driver.findElement(By.id("LastName")).sendKeys("Chitaliya");                                                     //Enter last name
-        driver.findElement(By.name("DateOfBirthDay")).findElement(By.xpath("//option[text()='6']")).click();           //Select day
-        driver.findElement(By.name("DateOfBirthMonth")).findElement(By.xpath("//option[text()='March']")).click();     //Select month
-        driver.findElement(By.name("DateOfBirthYear")).findElement(By.xpath("//option[text()='1999']")).click();       //Select year
-        driver.findElement(By.id("Email")).sendKeys("nishit123456chitaliya@gmail.com");                                   //Enter email
+        driver.findElement(By.name("DateOfBirthDay")).findElement(By.xpath("//option[text()='6']")).click();             //Select day
+        driver.findElement(By.name("DateOfBirthMonth")).findElement(By.xpath("//option[text()='March']")).click();       //Select month
+        driver.findElement(By.name("DateOfBirthYear")).findElement(By.xpath("//option[text()='1999']")).click();         //Select year
+        driver.findElement(By.id("Email")).sendKeys(emailID);                                                            //Enter email
         driver.findElement(By.id("Password")).sendKeys("Nishit@8664");                                                   //Enter password
         driver.findElement(By.id("ConfirmPassword")).sendKeys("Nishit@8664");                                            //Confirm password
-        driver.findElement(By.id("register-button")).click();                                                                       //Click on register button
+        driver.findElement(By.id("register-button")).click();                                                            //Click on register button
         String expectedText = "Your registration completed";
         String actualText = driver.findElement(By.xpath("//div[text()='Your registration completed']")).getText();
         //Comparing 2 strings
